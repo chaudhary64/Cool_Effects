@@ -12,6 +12,7 @@ h1 {
 	text-align: center;
 	text-transform: uppercase;
 	background: url(image.jpg);
+	background-clip: text;
 	-webkit-background-clip: text;
 	color: transparent;
 	animation: text-background 20s linear infinite;
