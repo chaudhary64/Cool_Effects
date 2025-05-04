@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gsap Text Split Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            overflow: hidden;
+            /* Ensures the content is not visible outside the element */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="title split">Hello World</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+        integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"
+        integrity="sha512-wOeEC+9qERAzhliwBFPDb6t8TiFFxdxG8vhK/Ygs7TuC44bpg8pg/X2/U/u+0X4fK05wb9id1EIipnF02+CFQw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        // Older way to create a SplitText instance and animate the characters
+        // split elements with the class "split" into words and characters
+        // let split = SplitText.create(".split", { type: "words, chars" });
+
+        // // now animate the characters in a staggered fashion
+        // gsap.from(split.chars, {
+        //     duration: 1,
+        //     y: 100,       // animate from 100px below
+        //     autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+        //     stagger: 0.05 // 0.05 seconds between each
+        // });
+
+        SplitText.create(".split", {
+            type: "words, chars",
+            onSplit(self) {
+                gsap.from(self.chars, {
+                    duration: 1,
+                    y: 100,
+                    autoAlpha: 0,
+                    stagger: 0.05
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
