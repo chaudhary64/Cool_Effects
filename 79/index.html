@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Scroll Skew Animation</title>
+</head>
+
+<body>
+
+    <h1 class="text">Scrolly Images</h1>
+    <h1 aria-hidden="true" class="text outline-text">Scrolly Images</h1>
+    <h1 aria-hidden="true" class="text filter-text">Scrolly Images</h1>
+
+    <div id="wrapper">
+        <section id="content">
+            <section class="images">
+                <img data-speed="0.8"
+                    src="https://images.unsplash.com/photo-1556856425-366d6618905d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fG5lb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                    alt="">
+                <img data-speed="0.9"
+                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                    alt="">
+                <img data-speed="1"
+                    src="https://images.unsplash.com/photo-1609166214994-502d326bafee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                    alt="">
+                <img data-speed="1.1"
+                    src="https://images.unsplash.com/photo-1589882265634-84f7eb9a3414?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=434&q=80"
+                    alt="">
+                <img data-speed="0.9"
+                    src="https://images.unsplash.com/photo-1514689832698-319d3bcac5d5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=434&q=80"
+                    alt="">
+                <img data-speed="1.2"
+                    src="https://images.unsplash.com/photo-1535207010348-71e47296838a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+                    alt="">
+                <img data-speed="0.8"
+                    src="https://images.unsplash.com/photo-1588007375246-3ee823ef4851?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5lb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                    alt="">
+                <img data-speed="1"
+                    src="https://images.unsplash.com/photo-1571450669798-fcb4c543f6a4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fG5lb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                    alt="">
+            </section>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+        integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"
+        integrity="sha512-t4hwZimhnCKT3YLAsEcAcRDkngVFfCcUIfNLIjklrIZAZKD+GfQMP7HbRcsVHxNS48WRBSywNU1uSM2zzLQt1Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+        integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // Create a fast setter for the skewY property of all <img> elements
+        let skewSetter = gsap.quickTo("img", "skewY"),
+            // Clamp function to limit skew between -20 and 20 degrees
+            clamp = gsap.utils.clamp(-20, 20);
+
+        // Initialize ScrollSmoother with custom options
+        ScrollSmoother.create({
+            wrapper: "#wrapper",      // The outer wrapper for smooth scrolling
+            content: "#content",      // The content to be scrolled
+            smooth: 2,                // Smoothness factor for scrolling
+            speed: 3,                 // Speed multiplier for scroll
+            effects: true,            // Enable effects for child elements
+            // onUpdate is called on every scroll update
+            onUpdate: self =>
+                // Set skewY based on scroll velocity, clamped to [-20, 20]
+                skewSetter(clamp(self.getVelocity() / -50)),
+            // onStop is called when scrolling stops
+            onStop: () => skewSetter(0) // Reset skew to 0
+        });
+    </script>
+</body>
+
+</html>
