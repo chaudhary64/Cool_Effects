@@ -1,0 +1,104 @@
+/* Core Reset and Image Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+#wrapper {
+  perspective: 80rem;
+  transform-style: preserve-3d;
+}
+
+.img {
+  height: 25rem;
+  width: 5.5rem;
+  background-size: cover;
+  background-position: center;
+  transform-style: preserve-3d;
+  position: relative;
+  transform-origin: center center;
+  transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Reset transforms when no hover state */
+#wrapper:not(:hover) .img {
+  transform: translateZ(0) rotateY(0deg);
+}
+
+/* Add subtle scale effect for better interaction feedback */
+.img:hover {
+  transform: translateZ(17.375rem) scale(1.02);
+  z-index: 10;
+}
+
+/* Enhance right elements with better z-index management */
+.img:hover+* {
+  transform: translateZ(14.77rem) rotateY(35deg);
+  z-index: 9;
+}
+
+.img:hover+*+* {
+  transform: translateZ(9.73rem) rotateY(40deg);
+  z-index: 8;
+}
+
+.img:hover+*+*+* {
+  transform: translateZ(4.17rem) rotateY(35deg);
+  z-index: 7;
+}
+
+.img:hover+*+*+*+* {
+  transform: translateZ(1.1rem) rotateY(25deg);
+  z-index: 6;
+}
+
+/* Enhance left elements with better z-index management */
+.img:has(+ :hover) {
+  transform: translateZ(14.77rem) rotateY(-35deg);
+  z-index: 9;
+}
+
+.img:has(+ * + :hover) {
+  transform: translateZ(9.73rem) rotateY(-40deg);
+  z-index: 8;
+}
+
+.img:has(+ * + * + :hover) {
+  transform: translateZ(4.17rem) rotateY(-35deg);
+  z-index: 7;
+}
+
+.img:has(+ * + * + * + :hover) {
+  transform: translateZ(1.1rem) rotateY(-25deg);
+  z-index: 6;
+}
+
+/* Filling the gap */
+
+.img::before,
+.img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.img::after {
+  left: -0.5rem;
+}
