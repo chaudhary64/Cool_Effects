@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color: #fff;
+}
+
+/* ScrollSmoother wrapper styles */
+#smooth-wrapper {
+  overflow: hidden;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.ipad-section {
+  display: grid;
+  align-items: start;
+}
+
+.svg-container {
+  grid-area: 1/1;
+  z-index: 10;
+  background-color: #fff;
+  mix-blend-mode: lighten;
+}
+
+.video-container {
+  grid-area: 1/1;
+  height: 100dvh;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

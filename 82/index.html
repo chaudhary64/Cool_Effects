@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"
+        integrity="sha512-t4hwZimhnCKT3YLAsEcAcRDkngVFfCcUIfNLIjklrIZAZKD+GfQMP7HbRcsVHxNS48WRBSywNU1uSM2zzLQt1Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <section class="grid min-h-screen place-items-center py-16">
+                <p class="mb-8 max-w-[15ch] text-gray-800 text-center text-[5vw] font-bold leading-[1]">
+                    Scroll-driven path animations
+                <p class="text-gray-600 text-xl">Time to do the scrolly-scrolly 👇</p>
+            </section>
+            <section class="ipad-section border-4 border-red-500">
+                <div class="svg-container border-4 border-blue-500">
+                    <svg viewBox="0 0 1400 700" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="w-full h-full border-4 border-green-500">
+                        <path id="svg-path"
+                            d="M817.502 79.4996C817.502 79.4996 471.288 64.9987 508.395 94.9995C545.503 125 591.503 107 759.003 136.5C1250.34 223.034 668.039 234.994 416.503 192C135.711 167.202 650.004 358.498 1035 268C1152.35 253.448 1361.42 429.964 803.003 370.5C394.503 327 280.856 305.789 226.503 327C165.003 351 1129.5 469.998 1253.5 460.5C1357.5 438.5 1690.5 582 888.503 542L118.503 430C-33.4972 406.5 -217.997 565 872.003 582L1357.5 565C1511.5 626 1623 719.5 118.503 613.5C60.9675 609.446 -289 592 388 727"
+                            stroke="black" stroke-width="130" stroke-linecap="round"></path>
+                    </svg>
+                </div>
+
+                <div id="video-container" class="video-container h-screen w-full">
+                    <video class="h-full w-full object-cover"
+                        src="https://videos.pexels.com/video-files/4125735/4125735-uhd_1440_2732_25fps.mp4" autoPlay
+                        muted loop></video>
+                </div>
+            </section>
+            <!-- Extra space -->
+            <section class="h-screen w-full"></section>
+        </div>
+    </div>
+
+    <script>
+        // Register GSAP plugins
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+        // Initialize ScrollSmoother
+        ScrollSmoother.create({
+            wrapper: "#smooth-wrapper",
+            content: "#smooth-content",
+            smooth: 1.5,   // how long (in seconds) it takes to "catch up" to the native scroll position
+            effects: true, // looks for data-speed and data-lag attributes on elements
+            smoothTouch: 0.1, // much shorter on touch devices (default is NO smoothing on touch devices)
+        });
+
+        // Get the SVG path element
+        const path = document.getElementById('svg-path');
+
+        // Get the total length of the path
+        const pathLength = path.getTotalLength();
+
+        // Set initial stroke-dasharray and stroke-dashoffset
+        path.style.strokeDasharray = pathLength;
+        path.style.strokeDashoffset = pathLength;
+
+        // Create the GSAP animation with ScrollTrigger
+        gsap.to(path, {
+            strokeDashoffset: 0,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".ipad-section",
+                start: "top 85%",
+                end: "bottom 20%",
+                scrub: 2,
+                invalidateOnRefresh: true,
+                markers: true // Enable markers for debugging
+            }
+        });
+
+    </script>
+</body>
+
+</html>
