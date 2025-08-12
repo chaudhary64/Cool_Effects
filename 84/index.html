@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Loader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mozilla+Headline:wdth,wght@75..125,200..700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        * {
+            font-family: "Mozilla Headline", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="min-h-screen bg-amber-500 text-8xl flex items-end justify-end p-5">
+        <!-- Digits-Container -->
+        <div class="digits-container flex">
+            <!-- Digit 1 -->
+            <div class="digit1 flex flex-col relative overflow-hidden">
+                <span class="relative top-0">0</span>
+                <span class="absolute top-full">1</span>
+            </div>
+            <!-- Digit 2 -->
+            <div class="digit2 flex flex-col relative overflow-hidden">
+                <span class="relative top-0">0</span>
+                <span class="absolute top-full">1</span>
+                <span class="absolute top-full">2</span>
+                <span class="absolute top-full">3</span>
+                <span class="absolute top-full">4</span>
+                <span class="absolute top-full">5</span>
+                <span class="absolute top-full">6</span>
+                <span class="absolute top-full">7</span>
+                <span class="absolute top-full">8</span>
+                <span class="absolute top-full">9</span>
+                <span class="absolute top-full">0</span>
+            </div>
+            <!-- Digit 3 -->
+            <div class="digit3 flex flex-col relative overflow-hidden">
+                <span class="relative top-0">0</span>
+                <span class="absolute top-full">1</span>
+                <span class="absolute top-full">2</span>
+                <span class="absolute top-full">3</span>
+                <span class="absolute top-full">4</span>
+                <span class="absolute top-full">5</span>
+                <span class="absolute top-full">6</span>
+                <span class="absolute top-full">7</span>
+                <span class="absolute top-full">8</span>
+                <span class="absolute top-full">9</span>
+                <span class="absolute top-full">0</span>
+            </div>
+            <span>%</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
