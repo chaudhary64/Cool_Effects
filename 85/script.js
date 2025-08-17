@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     duration: 0.8,
     id: "upwards",
   })
-    .to(ball, { y: 0, ease: "power1.in", id: "downwards" }, ">")
+    .to(ball, { y: 0, ease: "power1.in", id: "downwards" })
     .to(ball, {
       scaleY: 0.8,
       scaleX: 1.3,
