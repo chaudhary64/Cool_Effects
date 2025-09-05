@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Scroll Animation</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-neutral-800 overflow-x-hidden">
+
+    <main id="main-heading" class="h-screen w-full flex justify-center items-center text-white text-3xl font-mono">
+        Horizontal Scroll Section</main>
+    <section id="main" class="h-screen w-[400%] border-2 relative flex">
+        <div class="h-screen w-1/4 flex justify-center items-center">
+            <div class="ball h-32 w-32 rounded bg-yellow-500"></div>
+        </div>
+        <div class="h-screen w-1/4 flex justify-center items-center">
+            <div class="ball h-32 w-32 rounded bg-red-500"></div>
+        </div>
+        <div class="h-screen w-1/4 flex justify-center items-center">
+            <div class="ball h-32 w-32 rounded bg-blue-500"></div>
+        </div>
+        <div class="h-screen w-1/4 flex justify-center items-center">
+            <div class="ball h-32 w-32 rounded bg-green-500"></div>
+        </div>
+    </section>
+    <main class="h-screen w-full flex justify-center items-center text-white text-3xl font-mono">
+        End
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
