@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Gsap + submit button</title>
+
+    <style>
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .conic-gradient {
+            background: conic-gradient(from 0deg at 50% 50%, #8b5cf6 0deg 60deg, #d8b4fe 60deg 360deg);
+            animation: rotate 2s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+
+    <div class="min-h-screen flex justify-center items-center font-[Helvetica] gap-20">
+        <form action="">
+            <button id="submit_btn" class="px-10 py-2.5 text-xl bg-green-500 rounded-full cursor-pointer relative">
+                Submit
+                <!-- Spinner -->
+                <div id="spinner"
+                    class="hidden opacity-0 h-12 w-12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 conic-gradient flex justify-center items-center rounded-full overflow-hidden">
+                    <div class="h-[90%] w-[90%] bg-black rounded-full"></div>
+                </div>
+            </button>
+        </form>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
